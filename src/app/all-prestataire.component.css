@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  width: 80%; /* Adjust width as needed */
+  max-width: 1200px; /* Optional: Limit maximum width */
+  margin: 0 auto; /* Center horizontally */
+}
+
+.table-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+td {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  width: 40px;
+  height: 40px;
+  color: rgb(130, 43, 43);
+}
+
+.name {
+  color: rgb(130, 43, 43);
+  font-style: italic;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.essai {
+  
+  height: 100vh; /* Ensure full viewport height */
+}
+
+.center-list {
+  margin-bottom: 20px; /* Optional: Adjust spacing */
+}
+.container {
+  position: relative;
+}
+
+.button-add-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 20px; /* Adjust margin as needed */
+}

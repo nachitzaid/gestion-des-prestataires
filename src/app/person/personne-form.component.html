@@ -1,0 +1,127 @@
+<body>
+  <div class="container">
+    <form #form="ngForm" (ngSubmit)="submit(form)">
+      <div class="form-group">
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <mat-label>Nom</mat-label>
+              <input matInput type="text" id="nom" name="nom" class="form-control" [(ngModel)]="personne.nom" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <mat-label>Prénom</mat-label>
+              <input matInput type="text" id="prenom" name="prenom" class="form-control" [(ngModel)]="personne.prenom" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <mat-label>Date de naissance</mat-label>
+              <input matInput [matDatepicker]="picker" id="naissance" name="naissance" class="form-control" [(ngModel)]="personne.naissance" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <mat-label for="sexe">Sexe</mat-label>
+              <mat-select id="sexe" name="sexe" [(ngModel)]="personne.sexe" required>
+                <mat-option value="M">Homme</mat-option>
+                <mat-option value="F">Femme</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <mat-label>Adresse</mat-label>
+              <input matInput type="text" id="adresse" name="adresse" class="form-control" [(ngModel)]="personne.adresse" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <mat-label for="country">Pays</mat-label>
+              <mat-select id="country" name="country" [(ngModel)]="paysselectionne" (selectionChange)="onCountryChange()" required>
+                <mat-option value="">Sélectionner un pays</mat-option>
+                <mat-option *ngFor="let country of pays" [value]="country">{{ country }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label for="city">Ville</mat-label>
+              <mat-select id="city" name="city" [(ngModel)]="villeselectionne" required>
+                <mat-option value="">Sélectionner une ville</mat-option>
+                <mat-option *ngFor="let city of villes" [value]="city">{{ city }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <mat-label>Banque</mat-label>
+              <input matInput type="text" id="banque" name="banque" class="form-control" [(ngModel)]="personne.banque" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Numéro de Compte</mat-label>
+              <input matInput type="text" id="numerocompte" [formControl]="numeroCompteFormControl" [errorStateMatcher]="matcher" placeholder="Ex. 1234567890" required>
+              <mat-hint>Entre 10 et 20 chiffres</mat-hint>
+              <mat-error *ngIf="numeroCompteFormControl.hasError('pattern') && !numeroCompteFormControl.hasError('required')">
+                Entrer un numéro de compte valide
+              </mat-error>
+              <mat-error *ngIf="numeroCompteFormControl.hasError('required')">
+                NC <strong>obligatoire</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com" required>
+              <mat-hint>Valide</mat-hint>
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Veuillez entrer une adresse email valide
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                L'email est <strong>obligatoire</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <mat-label>Téléphone</mat-label>
+              <input type="tel" matInput [formControl]="phoneFormControl" [errorStateMatcher]="matcher" placeholder="Ex. 123-456-7890" required>
+              <mat-hint>Valide</mat-hint>
+              <mat-error *ngIf="phoneFormControl.hasError('pattern') && !phoneFormControl.hasError('required')">
+                Entrer un numéro de téléphone valide
+              </mat-error>
+              <mat-error *ngIf="phoneFormControl.hasError('required')">
+                Le numéro de téléphone est <strong>obligatoire</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="button-container">
+          <button mat-flat-button class="button transition duration-700 ease-in-out ... " type="submit" [disabled]="!form.valid || !emailFormControl.valid || !phoneFormControl.valid || numeroCompteFormControl.invalid">
+            Enregistrer
+          </button>
+          
+        </div>
+      </div>
+    </form><button mat-button color="warn" [routerLink]="['/list']">
+            Quitter
+          </button>
+    
+  </div>
+</body>

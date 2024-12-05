@@ -1,0 +1,12 @@
+<div class="flex justify-center items-center h-screen bg-gray-100">
+  <div class="bg-gray-200 p-8 rounded shadow-lg w-80">
+    <h2 class="text-center mb-4">Veuillez saisir le numéro de document papier :</h2>
+    <mat-form-field class="w-full">
+      <mat-label>Num doc papier</mat-label>
+      <input matInput [(ngModel)]="numDocPapier" placeholder="Num doc papier" />
+    </mat-form-field>
+    <div class="flex justify-center mt-4">
+      <button mat-raised-button color="primary" (click)="continue()">Continuer</button>
+    </div>
+  </div>
+</div>

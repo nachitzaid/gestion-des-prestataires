@@ -1,0 +1,34 @@
+.container {
+  text-align: center; /* Center align the form elements */
+  border: 1px solid #ccc; /* Add border to the container */
+  padding: 20px; /* Add padding inside the container */
+  margin: 0 auto; /* Center the container */
+  max-width: 600px; /* Set max-width for the container */
+  border-radius: 8px; /* Add border radius for rounded corners */
+}
+
+h2 {
+  margin-bottom: 20px; /* Add margin below the heading */
+}
+
+.full-width {
+  width: 100%; /* Make mat-form-field take full width */
+  display: block; /* Ensure each form field takes a full line */
+  margin-bottom: 20px; /* Add some space between form fields */
+}
+
+p {
+  text-align: left; /* Align the instruction text to the left */
+  margin-bottom: 10px; /* Add some space below the instruction text */
+}
+
+.button-container {
+  text-align: center; /* Center the button */
+}
+
+.button {
+  background-color: #3f51b5; /* Set button background color */
+  color: white; /* Set button text color */
+ 
+
+}

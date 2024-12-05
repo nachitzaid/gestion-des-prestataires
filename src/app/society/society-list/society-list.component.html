@@ -1,0 +1,28 @@
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Raison Sociale</th>
+        <th>IF</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let societe of societes">
+        <th>{{ societe.raisonSociale }}</th>
+        <th>{{ societe.IF }}</th>
+        <td>
+          <div class="button-container">
+            <button mat-icon-button color="primary" (click)="editSociete(societe.id)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteSociete(societe.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

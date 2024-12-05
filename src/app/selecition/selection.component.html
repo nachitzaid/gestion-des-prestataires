@@ -1,0 +1,28 @@
+<body>
+  <div class="container">
+    <h2>Veuillez sélectionner votre type</h2>
+    <form #form="ngForm" (ngSubmit)="navigate(form)" class="form-inline">
+      <mat-form-field class="full-width">
+        <mat-label>Type</mat-label>
+        <mat-select [(ngModel)]="selection" name="type" required>
+          <mat-option value="personne">personne</mat-option>
+          <mat-option value="society">society</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div *ngIf="selection" class="full-width">
+        <p>Veuillez saisir votre ID / INP / ICE </p>
+        <mat-form-field class="full-width">
+          <mat-label *ngIf="selection === 'personne'">ID</mat-label>
+          <mat-label *ngIf="selection === 'society'">INP or ICE</mat-label>
+          <input matInput placeholder="Enter ID, INP, or ICE" name="identifier" [(ngModel)]="id" required #identifier="ngModel">
+          <mat-error *ngIf="identifier.invalid && identifier.touched">veuillez remplir ce champs</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="button-container">
+        <button mat-flat-button class="button transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ..." type="submit" [disabled]="!id">Continue</button>
+      </div>
+    </form>
+  </div>
+</body>

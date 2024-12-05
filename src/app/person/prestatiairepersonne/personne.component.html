@@ -1,0 +1,33 @@
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <div class="table-container">
+      <table  >
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prestataire of prestataires">
+            <th>{{ prestataire.nom }}</th>
+            <th>{{ prestataire.prenom }}</th>
+            <td>
+              <div class="button-container">
+                <button mat-icon-button color="primary" (click)="editPrestataire(prestataire.id)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deletePrestataire(prestataire.id)">
+                  <mat-icon > <span class="material-symbols-outlined">
+                    delete
+                    </span></mat-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+ 
+

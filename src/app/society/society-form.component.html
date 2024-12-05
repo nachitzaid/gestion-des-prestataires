@@ -1,0 +1,92 @@
+<body>
+<div class="container">
+  <form #form="ngForm" (ngSubmit)="submit(form)">
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Raison Sociale</mat-label>
+            <input matInput placeholder="raison sociale" name="raisonSociale" [(ngModel)]="company.raisonSociale" required>
+            <mat-error *ngIf="form.controls['raisonSociale'].invalid && form.controls['raisonSociale'].touched">
+              Raison Sociale est requise
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>IF</mat-label>
+            <input matInput placeholder="IF" name="IF" [(ngModel)]="company.IF" required>
+            <mat-error *ngIf="form.controls['IF'].invalid && form.controls['IF'].touched">
+              IF est requis
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Registre Commercial</mat-label>
+            <input matInput placeholder="registre commercial" name="registreCommercial" [(ngModel)]="company.registreCommercial" required>
+            <mat-error *ngIf="form.controls['registreCommercial'].invalid && form.controls['registreCommercial'].touched">
+              Registre est requis
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Responsable Commercial</mat-label>
+            <input matInput placeholder="responsable commercial" name="responsableCommercial" [(ngModel)]="company.responsableCommercial" required>
+            <mat-error *ngIf="form.controls['responsableCommercial'].invalid && form.controls['responsableCommercial'].touched">
+              Responsable est requis
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Code Comptable</mat-label>
+            <input matInput placeholder="code comptable" name="codeComptable" [(ngModel)]="company.codeComptable" required>
+            <mat-error *ngIf="form.controls['codeComptable'].invalid && form.controls['codeComptable'].touched">
+              Code Comptable est requis
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Tél</mat-label>
+            <input matInput placeholder="tel" name="tel" [formControl]="telFormControl" required>
+            <mat-error *ngIf="telFormControl.hasError('required') && telFormControl.touched">
+              Tél est requis
+            </mat-error>
+            <mat-error *ngIf="telFormControl.hasError('pattern') && telFormControl.touched">
+              Format Tél invalide
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Fax</mat-label>
+            <input matInput placeholder="fax" name="fax" [formControl]="faxFormControl" required>
+            <mat-error *ngIf="faxFormControl.hasError('required') && faxFormControl.touched">
+              Fax est requis
+            </mat-error>
+            <mat-error *ngIf="faxFormControl.hasError('pattern') && faxFormControl.touched">
+              Format Fax invalide
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="button-container">
+        <button mat-flat-button class="button" type="submit" [disabled]="!form.valid">Enregistrer</button>
+      </div>
+    </div>
+  </form>
+  <button mat-button color="warn" [routerLink]="['/list']">
+    Quitter
+  </button>
+
+</div>
+</body>

@@ -1,0 +1,91 @@
+<div class="container mx-auto p-6">
+  <form [formGroup]="form">
+    <!-- Form fields for contract details -->
+    <div class="grid grid-cols-2 gap-6 p-4">
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Saisissez le titre</mat-label>
+        <input matInput placeholder="Titre du contrat" formControlName="title" />
+        <mat-error *ngIf="form.get('title')?.invalid && form.get('title')?.touched">
+          Ce champ est obligatoire.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Choisissez votre prestataire</mat-label>
+        <mat-select formControlName="prestataire">
+          <mat-option value="prestataire1">Prestataire 1</mat-option>
+          <mat-option value="prestataire2">Prestataire 2</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Début du contrat</mat-label>
+        <input matInput [matDatepicker]="pickerStart" placeholder="Début du contrat" formControlName="date" />
+        <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+        <mat-datepicker #pickerStart></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Fin du contrat</mat-label>
+        <input matInput [matDatepicker]="pickerEnd" placeholder="Fin du contrat" formControlName="finContrat" />
+        <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+        <mat-datepicker #pickerEnd></mat-datepicker>
+    </mat-form-field>
+    
+
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Préavis de résiliation</mat-label>
+        <mat-select formControlName="resiliationNotice">
+          <mat-option value="1mois">1 mois</mat-option>
+          <mat-option value="3mois">3 mois</mat-option>
+          <mat-option value="6mois">6 mois</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Cycle de renouvellement</mat-label>
+        <mat-select formControlName="renewalCycle">
+          <mat-option value="mensuel">Mensuel</mat-option>
+          <mat-option value="annuel">Annuel</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Annex section -->
+    <div class="col-span-2 mt-4">
+      <label class="block text-lg font-semibold mb-4">Annex (bordereaux):</label>
+
+      <!-- Table for displaying annexes -->
+      <table class="min-w-full border border-gray-300">
+        <thead>
+          <tr>
+            <th class="border-b p-2 text-left">Titre</th>
+            <th class="border-b p-2 text-left">Description</th>
+            <th class="border-b p-2 text-left">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let annex of annexList; let i = index" class="border-b">
+            <td class="p-2">{{ annex.title }}</td>
+            <td class="p-2">{{ annex.description }}</td>
+            <td class="p-2">
+              <button mat-icon-button color="warn" type="button" (click)="removeAnnex(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Button to add new annex -->
+      <div class="flex mt-4">
+        <button mat-raised-button color="primary" (click)="addAnnex()">+ Ajouter un élément</button>
+      </div>
+    </div>
+
+    <!-- Submit button -->
+    <div class="mt-6">
+      <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Enregistrer</button>
+    </div> 
+  </form>
+</div>
